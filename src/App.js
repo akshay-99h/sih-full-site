@@ -7,6 +7,7 @@ import 'firebase/compat/firestore';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+import Kommunicatechat from './chatbot'; 
 
 firebase.initializeApp({
   apiKey: "AIzaSyDlJYq0ovYNMsRh2y3LsQN3sZzHjPj4c2o",
@@ -26,6 +27,7 @@ function App() {
   const [user] = useAuthState(auth);
 
   return (
+    <>
     <div className="App">
       <header>
         <h1>Chat Forum💬</h1>
@@ -33,11 +35,13 @@ function App() {
       </header>
 
       <section>
-        
+        {/* Profile icon */}
         {user ? <ChatRoom /> : <SignIn />}
       </section>
 
-    </div>
+      </div>
+      <Kommunicatechat />
+    </>
   );
 }
 
