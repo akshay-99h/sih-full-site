@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Type Radar</title>
+    <meta property="og:type" content="website">
+    <meta name="description" content="A one-stop solution promoting self-care among students.">
+    <link rel="icon" type="image/png" sizes="705x837" href="../assets/img/Group%201.png">
+    <link rel="icon" type="image/png" sizes="705x837" href="../assets/img/Group%201.png">
+    <link rel="icon" type="image/png" sizes="705x837" href="../assets/img/Group%201.png">
+    <link rel="icon" type="image/png" sizes="705x837" href="../assets/img/Group%201.png">
+    <link rel="icon" type="image/png" sizes="705x837" href="../assets/img/Group%201.png">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="../assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="../assets/css/Side-By-Side-Section-sideBySide.css">
+    <link rel="stylesheet" href="../assets/css/article-nice.css">
+    <link rel="stylesheet" href="../assets/css/best-carousel-slide.css">
+    <link rel="stylesheet" href="../assets/css/Carousel-Hero.css">
+    <link rel="stylesheet" href="../assets/css/dh-header-cover-image-button.css">
+    <link rel="stylesheet" href="../assets/css/Latest-Events.css">
+    <link rel="stylesheet" href="../assets/css/Modern-Contact-Form.css">
+    <link rel="stylesheet" href="../assets/css/Nicepage-Block.css">
+    <link rel="stylesheet" href="../assets/css/game1.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md fixed-top navbar-shrink py-3" id="mainNav">
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"></a><button
+                data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
+                    class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1"><img src="../assets/img/LOGfO%201.png" width="99"
+                    height="47">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../mental.html">Mental</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../physical.html">Physical</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../social.html">Social</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#seminar">Seminar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../game.html">Games</a></li>
+                </ul><a class="btn btn-primary shadow" role="button" href="http://localhost:3002"
+                    style="background: var(--bs-success);--bs-primary: #139118;--bs-primary-rgb: 19,145,24;--bs-secondary: #e3823c;--bs-secondary-rgb: 227,130,60;border-color: var(--bs-green);">Forum</a>
+            </div>
+            <div></div>
+        </div>
+    </nav>
+    <section class="py-5 mt-5">
+        <cat class="main">
+            <div class="main__limit"></div>
+            <div class="main__instruct">Type <span>3</span> let<b>T</b>ers with uniq<b>U</b>e char<b>AC</b>te<b>R</b>s</div>
+            <div class="main__input">
+                <input type="text" placeholder="" />
+            </div>
+            <div class="main__feedback"></div>
+        </cat>
+        <!-- <div class="title">keep it unique<small>planetary defense</small></div> -->
+    </section>
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bold-and-bright.js"></script>
+    <!-- <script src="../assets/js/game.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+    <script>
+        console.clear();
+            let level = 3;
+            const $input = $(".main__input input");
+            let start, previousTimeStamp;
+            let createEnemy = 1000;
+            let firstType = true;
+
+            function testUniqueChars(text) {
+                let isUnique = true;
+                let chars = [];
+
+                [...text].forEach(function (c) {
+                    if (chars.includes(c)) {
+                        isUnique = false;
+                        return false;
+                    }
+                    chars.push(c);
+                });
+
+                return isUnique;
+            }
+
+            $input
+                .focus()
+                .on("keydown", function (e) {
+                    if (e.which == 13) {
+                        const text = $(this).val();
+                        const isUnique = testUniqueChars(text);
+                        const isLength = text.length == level;
+                        if (isUnique && isLength) {
+                            $(".main__feedback").slideUp().text("");
+                            $(this).val("").focus();
+                            level++;
+                            const offset = (level - 1) * 10;
+                            const speed = level / 2;
+                            if (firstType) {
+                                firstType = false;
+                                createEnemy = 0;
+                                $(".title, .branding").fadeOut();
+                            }
+                            $(".main").append(
+                                '<div class="main__star" data-offset="' +
+                                offset +
+                                '" data-last=0 style="top:calc(-' +
+                                offset +
+                                "px);transform-origin: 20px " +
+                                (100 + offset) +
+                                "px;animation-duration:" +
+                                speed +
+                                's"><span></span></div>'
+                            );
+                            $(".main__instruct").html(
+                                "Type <span>" +
+                                level +
+                                "</span> let<b>T</b>ers with uniq<b>U</b>e char<b>AC</b>te<b>R</b>s"
+                            );
+                        } else {
+                            if (!isLength) {
+                                $(".main__feedback").text("Incorrect Length!").slideDown();
+                            } else if (!isUnique) {
+                                $(".main__feedback").text("Not unique!").slideDown();
+                            }
+                        }
+                    }
+                })
+                .on("focus", function () {
+                    $(this).attr("placeholder", "");
+                })
+                .on("blur", function () {
+                    $(this).attr("placeholder", "|");
+                });
+
+            setInterval(function () {
+                const currState = $input.attr("placeholder");
+                if (currState == "|" || $input.is(":focus")) {
+                    $input.attr("placeholder", "");
+                } else {
+                    $input.attr("placeholder", "|");
+                }
+            }, 600);
+
+            function gameLoop(timestamp) {
+                if (start === undefined) {
+                    start = timestamp;
+                }
+                const elapsed = timestamp - start;
+
+                if (previousTimeStamp !== timestamp) {
+                    previousTimeStamp = timestamp;
+                    let enemyAngles = [];
+
+                    $(".enemy").each(function () {
+                        let distance = $(this).data("dist");
+                        let rotate = $(this).data("rotate");
+                        distance -= 1;
+                        $(this).data("dist", distance);
+                        $(this)
+                            .css(
+                                "transform",
+                                "translate(0px, -" + distance + "px) rotate(" + rotate + "deg)"
+                            )
+                            .css("transform-origin", "20px " + distance + "px");
+                        if (distance < 140) {
+                            bounds = this.getBoundingClientRect();
+                            const left = bounds.left;
+                            const top = bounds.top;
+                            $("body").append(
+                                '<div class="explosion new" style="left:' +
+                                left +
+                                "px;top:" +
+                                top +
+                                'px"></div>'
+                            );
+                            const explosion = $(".explosion.new");
+                            explosion.removeClass("new");
+                            setTimeout(function () {
+                                explosion.remove();
+                            }, 1000);
+                            $(this).remove();
+                        } else {
+                            const angle = getAngle($(this)[0]);
+                            enemyAngles.push(angle - 1);
+                            enemyAngles.push(angle);
+                            enemyAngles.push(angle + 1);
+                        }
+                    });
+
+                    $(".main__star").each(function () {
+                        const angle = getAngle($(this)[0]);
+                        if (enemyAngles.includes(angle) && $(this).data("last") < 0) {
+                            $(this).data("last", 10);
+                            $(".main").append(
+                                '<div class="main__bullet" data-distance="' +
+                                $(this).data("offset") +
+                                '" data-rotate="' +
+                                angle +
+                                '" style="transform: rotate(' +
+                                angle +
+                                'deg) translateY(-10px)"></div>'
+                            );
+                            console.log(enemyAngles, angle);
+                        } else {
+                            $(this).data("last", parseInt($(this).data("last")) - 1);
+                        }
+                    });
+
+                    $(".main__bullet").each(function () {
+                        let distance = $(this).data("distance");
+                        let angle = $(this).data("rotate");
+                        distance += 5;
+                        $(this).data("distance", distance);
+                        $(this).css(
+                            "transform",
+                            "rotate(" + angle + "deg) translateY(-" + distance + "px)"
+                        );
+                        if (distance > 500) {
+                            $(this).remove();
+                        }
+
+                        const bullet = this;
+                        $(".enemy").each(function () {
+                            if (isCollide($(this)[0], bullet)) {
+                                bounds = this.getBoundingClientRect();
+                                const left = bounds.left;
+                                const top = bounds.top;
+                                $("body").append(
+                                    '<div class="explosion new" style="left:' +
+                                    left +
+                                    "px;top:" +
+                                    top +
+                                    'px"></div>'
+                                );
+                                const explosion = $(".explosion.new");
+                                explosion.removeClass("new");
+                                setTimeout(function () {
+                                    explosion.remove();
+                                }, 1000);
+                                $(this).remove();
+                                bullet.remove();
+                            }
+                        });
+                    });
+
+                    if (createEnemy < 0) {
+                        const randRotate = Math.round(Math.random() * 360);
+                        const dist = 500;
+                        const randType = Math.ceil(Math.random() * 5);
+                        $(".main").append(
+                            '<div class="enemy enemy--' +
+                            randType +
+                            '" data-rotate="' +
+                            randRotate +
+                            '" data-dist="' +
+                            dist +
+                            '" style="transform: translate(0, -' +
+                            dist +
+                            "px) rotate(" +
+                            randRotate +
+                            "deg);transform-origin:20px " +
+                            dist +
+                            'px"></div>'
+                        );
+                        createEnemy = 1000 / level ** 2;
+                    } else {
+                        createEnemy--;
+                        // console.log(createEnemy);
+                    }
+                }
+
+                window.requestAnimationFrame(gameLoop);
+            }
+
+            window.requestAnimationFrame(gameLoop);
+
+            function getAngle(el) {
+                var st = window.getComputedStyle(el, null);
+                var tr =
+                    st.getPropertyValue("-webkit-transform") ||
+                    st.getPropertyValue("-moz-transform") ||
+                    st.getPropertyValue("-ms-transform") ||
+                    st.getPropertyValue("-o-transform") ||
+                    st.getPropertyValue("transform") ||
+                    "FAIL";
+
+                var values = tr.split("(")[1].split(")")[0].split(",");
+                var a = values[0];
+                var b = values[1];
+                var c = values[2];
+                var d = values[3];
+
+                var scale = Math.sqrt(a * a + b * b);
+
+                // arc sin, convert from radians to degrees, round
+                var sin = b / scale;
+                // next line works for 30deg but not 130deg (returns 50);
+                // var angle = Math.round(Math.asin(sin) * (180/Math.PI));
+                var angle = Math.round(Math.atan2(b, a) * (180 / Math.PI));
+
+                return angle;
+            }
+
+            function isCollide(a, b) {
+                var aRect = a.getBoundingClientRect();
+                var bRect = b.getBoundingClientRect();
+
+                return !(
+                    aRect.top + aRect.height < bRect.top ||
+                    aRect.top > bRect.top + bRect.height ||
+                    aRect.left + aRect.width < bRect.left ||
+                    aRect.left > bRect.left + bRect.width
+                );
+            }
+        
+
+    </script>
+</body>
+
+</html>

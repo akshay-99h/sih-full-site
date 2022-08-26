@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Guess the Colour</title>
+    <meta property="og:type" content="website">
+    <meta name="description" content="A one-stop solution promoting self-care among students.">
+    <link rel="icon" type="image/png" sizes="705x837" href="../assets/img/Group%201.png">
+    <link rel="icon" type="image/png" sizes="705x837" href="../assets/img/Group%201.png">
+    <link rel="icon" type="image/png" sizes="705x837" href="../assets/img/Group%201.png">
+    <link rel="icon" type="image/png" sizes="705x837" href="../assets/img/Group%201.png">
+    <link rel="icon" type="image/png" sizes="705x837" href="../assets/img/Group%201.png">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="../assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="../assets/css/Side-By-Side-Section-sideBySide.css">
+    <link rel="stylesheet" href="../assets/css/article-nice.css">
+    <link rel="stylesheet" href="../assets/css/best-carousel-slide.css">
+    <link rel="stylesheet" href="../assets/css/Carousel-Hero.css">
+    <link rel="stylesheet" href="../assets/css/dh-header-cover-image-button.css">
+    <link rel="stylesheet" href="../assets/css/Latest-Events.css">
+    <link rel="stylesheet" href="../assets/css/Modern-Contact-Form.css">
+    <link rel="stylesheet" href="../assets/css/Nicepage-Block.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Poiret+One");
+* {
+        font-family: "Poiret One", cursive;
+}
+
+body {
+        margin: 0;
+        list-style-type: none;
+        background-color: #F9F9F9;
+        font-family: "komika_axisregular", Comic Sans MS, sans-serif;
+}
+
+button {
+        font-family: "komika_axisregular";
+}
+
+.clearfix::after {
+        content: "";
+        display: table;
+        clear: both;
+}
+
+.wrap {
+        margin: 0 auto;
+        width: 90%;
+        max-width: 1200px;
+}
+
+.timer__container {
+        height: 5px;
+}
+
+.timer__container .timer {
+        height: 100%;
+        background-color: #000;
+}
+
+.scores__container {
+        margin-top: 1em;
+}
+
+.scores__container > * {
+        display: inline-block;
+}
+
+.scores__container .score__container {
+        float: left;
+}
+
+.scores__container .pb__container {
+        display: none;
+        float: right;
+}
+
+.scores__container p {
+        color: #8A8A8A;
+}
+
+.scores__container .score {
+        font-size: 1em;
+}
+
+@media screen and (min-width: 320px) {
+        .scores__container .score {
+    font-size: 2em;
+    }
+}
+.title {
+        margin: 0.5em 0;
+        text-align: center;
+        font-size: 2em;
+        color: #4A4A4A;
+}
+
+@media screen and (min-width: 320px) {
+        .title {
+    margin: 0.25em 0;
+    font-size: 3em;
+    }
+}
+.subtitle {
+        margin-bottom: 2em;
+        text-align: center;
+        color: #4A4A4A;
+        font-size: 0.75em;
+}
+
+@media screen and (min-width: 320px) {
+        .subtitle {
+    font-size: 1em;
+    }
+}
+.subtitle em {
+        padding-bottom: 3px;
+        display: inline-block;
+        border-bottom: 2px solid #4A4A4A;
+}
+
+.subtitle a {
+        color: #45b4e7;
+        text-decoration: none;
+        border-bottom: 2px solid #45b4e7;
+}
+
+.start {
+        display: block;
+        margin: 0 auto;
+        padding-bottom: 10px;
+        width: 150px;
+        height: 150px;
+        border-radius: 100%;
+        background-color: #000;
+        font-size: 3em;
+        color: #fff;
+        border: 0;
+        cursor: pointer;
+}
+
+.word {
+        font-size: 4em;
+        text-align: center;
+}
+
+@media screen and (min-width: 480px) {
+        .word {
+    display: inline-block;
+    width: 50%;
+    }
+}
+@media screen and (min-width: 320px) {
+        .word {
+    display: block;
+    width: auto;
+    }
+}
+.options__container {
+    margin: 3em 0;
+}
+
+@media screen and (min-width: 480px) {
+    .options__container {
+    display: inline-block;
+    margin: 0;
+    width: 50%;
+    float: right;
+    }
+}
+@media screen and (min-width: 320px) {
+    .options__container {
+    display: block;
+    margin: 3em 0;
+    width: auto;
+    float: none;
+    }
+}
+.options__container li {
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+@inluce bp($sm) {
+    .options__container li {
+    margin-bottom: 0;
+    }
+}
+.options__container button {
+    position: relative;
+    background-color: transparent;
+    border: 0;
+    font-size: 1em;
+    color: #8A8A8A;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 320px) {
+    .options__container button {
+    font-size: 2em;
+    line-height: 1.25em;
+    }
+}
+.modal__container {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal__container .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    padding: 25px 0;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+@media screen and (min-width: 480px) {
+    .modal__container .modal {
+    width: 450px;
+    }
+}
+.modal__container p {
+    color: #ec6f86;
+    font-size: 2em;
+    text-align: center;
+}
+
+@media screen and (min-width: 320px) {
+    .modal__container p {
+    font-size: 3em;
+    }
+}
+.modal__container button {
+    margin: 50px auto 0;
+    padding: 1em;
+    border: 3px solid #000;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #000;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 5s;
+}
+
+@media screen and (min-width: 320px) {
+    .modal__container button {
+    font-size: 1.25em;
+    }
+}
+.modal__container button:hover {
+    background-color: #000;
+    color: #ffffff;
+    border-color: #000;
+}
+
+#restart {
+    display: none;
+}
+
+@keyframes glow {
+    50% {
+    box-shadow: 0 0 10px 10px #f29cac;
+    }
+}
+li {
+    list-style: none;
+    background-image: none;
+    background-repeat: none;
+    background-position: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+li {
+    background-image: url(sqpurple.gif);
+    background-repeat: no-repeat;
+    background-position: 0px 5px;
+    padding-left: 14px;
+}
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md fixed-top navbar-shrink py-3" id="mainNav">
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"></a><button
+                data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
+                    class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1"><img src="../assets/img/LOGfO%201.png" width="99"
+                    height="47">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mental.html">Mental</a></li>
+                    <li class="nav-item"><a class="nav-link" href="physical.html">Physical</a></li>
+                    <li class="nav-item"><a class="nav-link" href="social.html">Social</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#seminar">Seminar</a></li>
+                </ul><a class="btn btn-primary shadow" role="button" href="http://localhost:3002"
+                    style="background: var(--bs-success);--bs-primary: #139118;--bs-primary-rgb: 19,145,24;--bs-secondary: #e3823c;--bs-secondary-rgb: 227,130,60;border-color: var(--bs-green);">Forum</a>
+            </div>
+            <div></div>
+        </div>
+    </nav>
+    <section class="py-5 mt-5">
+        <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Social Health</title>
+    <meta property="og:type" content="website">
+    <meta name="description" content="A one-stop solution promoting self-care among students.">
+    <link rel="icon" type="image/png" sizes="705x837" href="../assets/img/Group%201.png">
+    <link rel="icon" type="image/png" sizes="705x837" href="../assets/img/Group%201.png">
+    <link rel="icon" type="image/png" sizes="705x837" href="../assets/img/Group%201.png">
+    <link rel="icon" type="image/png" sizes="705x837" href="../assets/img/Group%201.png">
+    <link rel="icon" type="image/png" sizes="705x837" href="../assets/img/Group%201.png">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="../assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="../assets/css/Side-By-Side-Section-sideBySide.css">
+    <link rel="stylesheet" href="../assets/css/article-nice.css">
+    <link rel="stylesheet" href="../assets/css/best-carousel-slide.css">
+    <link rel="stylesheet" href="../assets/css/Carousel-Hero.css">
+    <link rel="stylesheet" href="../assets/css/dh-header-cover-image-button.css">
+    <link rel="stylesheet" href="../assets/css/Latest-Events.css">
+    <link rel="stylesheet" href="../assets/css/Modern-Contact-Form.css">
+    <link rel="stylesheet" href="../assets/css/Nicepage-Block.css">
+    <!-- <link rel="stylesheet" href="../assets/css/game1.css"> -->
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md fixed-top navbar-shrink py-3" id="mainNav">
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"></a><button
+                data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
+                    class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1"><img src="../assets/img/LOGfO%201.png" width="99"
+                    height="47">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../mental.html">Mental</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../physical.html">Physical</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../social.html">Social</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#seminar">Seminar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../game.html">Games</a></li>
+                </ul><a class="btn btn-primary shadow" role="button" href="http://localhost:3002"
+                    style="background: var(--bs-success);--bs-primary: #139118;--bs-primary-rgb: 19,145,24;--bs-secondary: #e3823c;--bs-secondary-rgb: 227,130,60;border-color: var(--bs-green);">Forum</a>
+            </div>
+            <div></div>
+        </div>
+    </nav>
+    <section class="py-5 mt-5">
+        <body translate="no">
+            <div class="timer__container">
+                <div id="timer" class="timer"></div>
+            </div>
+            <div class="scores__container wrap clearfix">
+                <div class="score__container">
+                    <p>Score: <span id="score" class="score"></span></p>
+                </div>
+                <div id="pb-container" class="pb__container">
+                    <p>
+                    <!-- <h1>Play Hard</h1> -->
+                    <span id="pb" class="score"></span></p>
+                </div>
+            </div>
+            <div class="wrap">
+                <!-- <h1 class="title">Name that colour!</h1> -->
+                <p class="subtitle">Click the colour.<br><br>
+                    <button class="start" id="start">Go!</button>
+                <p class="word" id="word"></p>
+                <ul id="options" class="options__container"></ul>
+                <div id="gameover-container" class="modal__container">
+                    <div class="modal">
+                        <p style="color:black">Game over!</p>
+                        <button id="restart">Have another go?</button>
+                    </div>
+                </div>
+            </div>
+        <!-- <div class="title">keep it unique<small>planetary defense</small></div> -->
+    </section>
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bold-and-bright.js"></script>
+    <!-- <script src="../assets/js/game.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+            "use strict";
+
+                var wg = function (difficulty) {
+                    var names = ['Red',
+                        'Yellow',
+                        'Blue',
+                        'Green',
+                        'Purple'
+                    ],
+
+                        colours = ['rgb(236, 111, 134)',
+                            'rgb(255, 221, 117)',
+                            'rgb(69, 180, 231)',
+                            'rgb(178, 240, 104)',
+                            'rgb(167, 111, 236)'
+                        ],
+
+                        timeout,
+                        timer;
+
+                    var domCache = {
+                        startGame: document.getElementById('start'),
+                        wordContainer: document.getElementById('word'),
+                        optionsContainer: document.getElementById('options'),
+                        scoreContainer: document.getElementById('score'),
+                        timer: document.getElementById('timer'),
+                        gameoverContainer: document.getElementById('gameover-container'),
+                        restart: document.getElementById('restart'),
+                        pbContainer: document.getElementById('pb-container'),
+                        pb: document.getElementById('score')
+                    };
+
+                    var methods = {
+                        pbCookie: function () {
+                            var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)wg-pb\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+                            if (!cookieValue) {
+                                domCache.pb.textContent = 0;
+                            } else {
+                                domCache.pbContainer.style.display = 'block';
+                                domCache.pb.textContent = cookieValue;
+                            }
+
+                            return cookieValue;
+                        },
+
+                        rand: function () {
+                            var i = (Math.round(Math.random() * (names.length - 1)));
+
+                            return i;
+                        },
+
+                        pick: function (ar) {
+                            var picked = ar[methods.rand()];
+
+                            return picked;
+                        },
+
+                        printWord: function () {
+                            domCache.wordContainer.textContent = methods.pick(names);
+                            domCache.wordContainer.style.color = methods.pick(colours);
+                        },
+
+                        timeout: function () {
+                            clearTimeout(timeout);
+
+                            timeout = setTimeout(function () {
+                                methods.gameOver();
+                            }, difficulty);
+                        },
+
+                        timer: function () {
+                            clearInterval(timer);
+                            var w = 100
+
+                            timer = window.setInterval(function () {
+                                domCache.timer.style.width = ((w - 1) - 1) + '%';
+                                w--;
+                            }, (difficulty / 100));
+                        },
+
+                        printOptions: function () {
+                            for (var i = 0; i < names.length; i++) {
+                                domCache.optionsContainer.innerHTML += '<li><button class="option" data-colour="' + colours[i] + '">' + names[i] + '</button></li>';
+                            }
+                        },
+
+                        getOptions: function () {
+                            var options = document.querySelectorAll('.option');
+
+                            return options;
+                        },
+
+                        clickListeners: function () {
+                            for (var i = 0; i < names.length; i++) {
+                                methods.getOptions()[i].addEventListener('click', function (e) {
+                                    methods.answerAttempt(e);
+                                });
+                            };
+                        },
+
+                        answerAttempt: function (e) {
+                            var attempt = e.target.getAttribute('data-colour');
+
+                            if (attempt != domCache.wordContainer.style.color) {
+                                methods.gameOver();
+                            } else {
+                                methods.updateScore();
+                                methods.printWord();
+                                methods.timer();
+                                methods.timeout();
+                            }
+                        },
+
+                        gameOver: function () {
+                            domCache.gameoverContainer.style.display = 'block';
+                            domCache.restart.style.display = 'block';
+                            methods.restart();
+                        },
+
+                        restart: function () {
+                            domCache.restart.addEventListener('click', function () {
+                                document.cookie = 'wg-pb=0';
+                                domCache.gameoverContainer.style.display = 'none';
+                                domCache.restart.style.display = 'none';
+                                methods.updateScore(0);
+                                methods.printWord();
+                                methods.timer();
+                                methods.timeout();
+                            });
+                        },
+
+                        initScore: function () {
+                            domCache.scoreContainer.textContent = 0;
+                        },
+
+                        updateScore: function (sc) {
+                            if (sc == false) {
+                                domCache.scoreContainer.textContent = 0;
+                            }
+                            else {
+
+                                var currentScore = parseInt(domCache.scoreContainer.textContent);
+                                var newScore = currentScore + 100;
+                                domCache.scoreContainer.textContent = newScore;
+                                //alert(document.cookie.value); 
+                                if (newScore > methods.pbCookie() && newScore <= 500) {
+                                    var temp = newScore
+                                    document.cookie = 'wg-pb=' + newScore;
+                                }
+                                else if (newScore > methods.pbCookie() && newScore <= 1100 && newScore > 500) {
+                                    var temp = newScore + 200;
+                                    document.cookie = 'wg-pb=' + temp;
+                                }
+                                else if (newScore > methods.pbCookie() && newScore <= 5000 && newScore > 1000) {
+                                    var temp2 = newScore + 600;
+                                    document.cookie = 'wg-pb=' + temp2;
+                                }
+                                else if (newScore > methods.pbCookie() && newScore > 5000 && newScore <= 10000) {
+                                    var temp3 = newScore + 1100;
+                                    document.cookie = 'wg-pb=' + temp3;
+                                }
+                                else if (newScore > methods.pbCookie() && newScore > 10000 && newScore <= 100000) {
+                                    var temp3 = newScore + 11000;
+                                    document.cookie = 'wg-pb=' + temp3;
+                                }
+                                else if (newScore > methods.pbCookie() && newScore > 100000) {
+                                    var temp3 = newScore + 110000;
+                                    document.cookie = 'wg-pb=' + temp3;
+                                }
+
+                                domCache.pb.textContent = methods.pbCookie();
+                            }
+                        },
+
+                        startGame: function () {
+
+                            domCache.startGame.addEventListener('click', function () {
+                                document.cookie = 'wg-pb=0';
+                                methods.printWord();
+                                methods.printOptions();
+                                methods.timer();
+                                methods.timeout();
+                                methods.clickListeners();
+                                domCache.startGame.style.display = 'none';
+                            });
+                        }
+                    };
+
+                    var init = function () {
+                        document.cookie = 'wg-pb=0';
+                        methods.initScore();
+                        methods.pbCookie();
+                        methods.startGame();
+                    };
+
+                    return {
+                        init: init()
+                    }
+                }
+
+                wg(1750);
+    </script>
+</body>
+
+</html>
